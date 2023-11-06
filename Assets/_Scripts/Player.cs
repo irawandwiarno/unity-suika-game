@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.Events;
 using System.Collections;
 
-
-public class Player : MonoBehaviour, TouchInput.ITouchActions
+public class Player : MonoBehaviour
 {
     public Transform startFruid;
     public Transform batasKiri;
     public Transform batasKanan;
-    private TouchInput touchInput;
     private Camera cameraMain;
     public static bool fruitExist = false;
     private Coroutine releaseCoroutine;
@@ -17,68 +16,59 @@ public class Player : MonoBehaviour, TouchInput.ITouchActions
 
     public UnityEvent OnTouchRellase;
 
-
     private void Awake()
     {
-        touchInput = new TouchInput();
         cameraMain = Camera.main;
     }
 
     private void OnEnable()
     {
-        touchInput.Enable();
-        //touchInput.Touch.SetCallbacks(this);
+        // Aktifkan fitur input sentuh yang ditingkatkan
+        EnhancedTouchSupport.Enable();
     }
 
     private void OnDisable()
     {
-           // Cancel all input actions
-        touchInput.Disable();
-
-        // Clear all callbacks
-        //touchInput.Touch.TouchPosition.canceled -= OnTouchCanceled;
+        // Nonaktifkan fitur input sentuh yang ditingkatkan
+        EnhancedTouchSupport.Disable();
     }
 
-    public void OnTouchInput(InputAction.CallbackContext context)
+    private void Update()
     {
-    }
-
-    public void OnTouchPress(InputAction.CallbackContext context)
-    {
-        if (!EndLine.isPaused)
+        // Periksa input sentuh
+        foreach (var touch in UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches)
         {
-            if (context.canceled)
+            // Lakukan sesuatu dengan setiap sentuhan aktif
+            if (!EndLine.isPaused)
             {
-                OnTouchRellase.Invoke();
-                Debug.Log("OnPrees Releasse");
-                if (releaseCoroutine != null)
+                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
                 {
-                    StopCoroutine(releaseCoroutine);
+                    OnTouchRellase.Invoke();
+                    Debug.Log("OnPress Release");
+                    if (releaseCoroutine != null)
+                    {
+                        StopCoroutine(releaseCoroutine);
+                    }
+
+                    releaseCoroutine = StartCoroutine(ReleaseCoroutine());
                 }
 
-                releaseCoroutine = StartCoroutine(ReleaseCoroutine());
+                Vector3 screenPos = new Vector3(touch.screenPosition.x, touch.screenPosition.y, cameraMain.nearClipPlane);
+                Vector3 worldPos = cameraMain.ScreenToWorldPoint(screenPos);
+                worldPos.z = 0;
+                worldPos.y = startFruid.position.y;
+                if (worldPos.x <= batasKiri.position.x)
+                {
+                    worldPos.x = -1.6f;
+                }
+                if (worldPos.x >= batasKanan.position.x)
+                {
+                    worldPos.x = 1.6f;
+                }
+                gameObject.transform.position = worldPos;
+                Debug.Log("Touch position: " + worldPos);
             }
         }
-
-    }
-
-    public void OnTouchPosition(InputAction.CallbackContext context)
-    {
-        Vector2 touchPos = context.ReadValue<Vector2>();
-        Vector3 screenPos = new Vector3(touchPos.x, touchPos.y, cameraMain.nearClipPlane);
-        Vector3 worldPos = cameraMain.ScreenToWorldPoint(screenPos);
-        worldPos.z = 0;
-        worldPos.y = startFruid.position.y;
-        if (worldPos.x <= batasKiri.position.x)
-        {
-            worldPos.x = -1.6f;
-        }
-        if (worldPos.x >= batasKanan.position.x)
-        {
-            worldPos.x = 1.6f;
-        }
-        gameObject.transform.position = worldPos;
-        Debug.Log("Touch position: " + worldPos);
     }
 
     private IEnumerator ReleaseCoroutine()
@@ -88,5 +78,4 @@ public class Player : MonoBehaviour, TouchInput.ITouchActions
         fruitExist = false;
         releaseCoroutine = null;
     }
-
 }

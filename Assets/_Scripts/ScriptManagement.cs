@@ -99,10 +99,7 @@ public class ScriptManagement : MonoBehaviour
         }
     }
 
-    public void backMainButton()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+    
 
 }
 

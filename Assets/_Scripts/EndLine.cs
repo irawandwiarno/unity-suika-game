@@ -6,6 +6,13 @@ public class EndLine : MonoBehaviour
 {
     private float timeInTrigger = 0;
     public static bool isPaused = false;
+    public GameObject UIHandler;
+    private UIHandler UIHandlerScript;
+
+    private void Start()
+    {
+        UIHandlerScript = UIHandler.GetComponent<UIHandler>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,6 +29,7 @@ public class EndLine : MonoBehaviour
             if (timeInTrigger >= 5f && !isPaused) // jika sudah lebih dari 5 detik dan game belum di pause
             {
                 PauseGame(); // pause game
+                UIHandlerScript.GameOver();
                 isPaused = true;
             }
         }
@@ -52,4 +60,6 @@ public class EndLine : MonoBehaviour
     {
         Time.timeScale = 1; // set timescale ke 1 untuk resume game
     }
+
+    
 }
