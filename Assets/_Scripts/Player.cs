@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         cameraMain = Camera.main;
+        fruitExist = false;
     }
 
     private void OnEnable()
@@ -44,7 +45,6 @@ public class Player : MonoBehaviour
                 if (touch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
                 {
                     OnTouchRellase.Invoke();
-                    Debug.Log("OnPress Release");
                     if (releaseCoroutine != null)
                     {
                         StopCoroutine(releaseCoroutine);
@@ -66,7 +66,6 @@ public class Player : MonoBehaviour
                     worldPos.x = 1.6f;
                 }
                 gameObject.transform.position = worldPos;
-                Debug.Log("Touch position: " + worldPos);
             }
         }
     }

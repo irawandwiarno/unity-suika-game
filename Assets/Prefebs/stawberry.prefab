@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7644259048735912252}
   - component: {fileID: 5541111175736998570}
   - component: {fileID: 7247977211833647223}
-  - component: {fileID: 8386489117701956376}
+  - component: {fileID: 3193322900987994390}
   m_Layer: 0
   m_Name: stawberry
   m_TagString: Untagged
@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4129450795729929687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.1464, y: -0.19, z: 0}
-  m_LocalScale: {x: 0.8475, y: 0.8475, z: 0.8475}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1400262, y: 0.14002624, z: 0.1400262}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7644259048735912252
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: a2d2fb31ed574da4aa7dfe3c67f4179a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c01833256a0ecbf488b127319c3d3366, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jenisBuah: 1
   followPlayer: 0
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &7247977211833647223
 Rigidbody2D:
   serializedVersion: 4
@@ -128,8 +131,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &8386489117701956376
-CircleCollider2D:
+--- !u!60 &3193322900987994390
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,5 +164,33 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.375
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.65, y: 3.64}
+    newSize: {x: 0.75, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8703063, y: 0.22418258}
+      - {x: 1.7655663, y: 0.84056634}
+      - {x: 1.4113188, y: 1.3787936}
+      - {x: 0.8105277, y: 1.8562833}
+      - {x: -0.83729917, y: 1.810929}
+      - {x: -1.3793303, y: 1.4337504}
+      - {x: -1.7187167, y: 0.9139371}
+      - {x: -1.8249999, y: 0.75}
+      - {x: -1.8500019, y: 0.07378957}
+      - {x: -1.7456608, y: -0.51047194}
+      - {x: -1.5812193, y: -0.94537294}
+      - {x: -1.225472, y: -1.3510382}
+      - {x: -0.905566, y: -1.6529928}
+      - {x: -0.45499998, y: -1.8199999}
+      - {x: 0.505, y: -1.8199999}
+      - {x: 1.0858496, y: -1.4406607}
+      - {x: 1.495, y: -1.09}
+      - {x: 1.7358493, y: -0.5184897}
+  m_UseDelaunayMesh: 0

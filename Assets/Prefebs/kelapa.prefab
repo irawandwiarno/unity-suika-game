@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6501821396882947207}
   - component: {fileID: 812429650484889376}
   - component: {fileID: 2629398001050394995}
-  - component: {fileID: 6931071807757015263}
+  - component: {fileID: 8361425599706504652}
   m_Layer: 0
   m_Name: kelapa
   m_TagString: Untagged
@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827246601697820868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.618101, y: -0.15, z: 0}
-  m_LocalScale: {x: 0.6471536, y: 0.6471536, z: 0.6471536}
+  m_LocalPosition: {x: 14.3423, y: -0.4258, z: 0}
+  m_LocalScale: {x: 0.37871706, y: 0.37871706, z: 0.37871706}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6501821396882947207
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 51d9d284ab192934688cc0b1e860c183, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f9ed2b901b14404ea9244265db35f85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6931071807757015263
+--- !u!58 &8361425599706504652
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,4 +162,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.995
+  m_Radius: 1.8249999

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8272235033796461252}
   - component: {fileID: 8255774471478427748}
   - component: {fileID: 96898035674301706}
-  - component: {fileID: 7303875382358038310}
+  - component: {fileID: 8045388327548645006}
   m_Layer: 0
   m_Name: semangka
   m_TagString: Untagged
@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8978420216843003399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.75, y: -0.15, z: 0}
-  m_LocalScale: {x: 0.6471536, y: 0.6471536, z: 0.6471536}
+  m_LocalPosition: {x: 21.8074, y: -0.0926, z: 0}
+  m_LocalScale: {x: 0.67860526, y: 0.67860526, z: 0.67860526}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8272235033796461252
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 701ec583ef0b5fb45b048fea98f28569, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 358b786c550590645ad7812bd31429ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7303875382358038310
+--- !u!58 &8045388327548645006
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,4 +162,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.98
+  m_Radius: 1.8250003

@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class ScriptManagement : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class ScriptManagement : MonoBehaviour
     SpawnFruit spawnScript;
     public bool stayFruit = false;
 
+    public TextMeshProUGUI scoreText;
+    static public int score = 0;
+
+
 
 
     private GameObject fruitNext;
@@ -20,6 +25,7 @@ public class ScriptManagement : MonoBehaviour
     {
         spawnScript = AnkorSpawn.gameObject.GetComponent<SpawnFruit>();
         spawnBuah();
+        scoreText.text = score.ToString();
     }
     private void Update()
     {
@@ -29,7 +35,7 @@ public class ScriptManagement : MonoBehaviour
 
     private void gabunginBuah()
     {
-        if (ubahBuah == true)
+        if (ubahBuah)
         {
             ubahBuah = false;
             int index = nextBuahIndex();
@@ -44,34 +50,50 @@ public class ScriptManagement : MonoBehaviour
     {
         if (JenisBuah.cerry == namaBuah)
         {
+            score += 5;
+            scoreText.text = score.ToString();
             return 1;
         }
         if (JenisBuah.stawberry == namaBuah)
         {
+            score += 10;
+            scoreText.text = score.ToString();
             return 2;
         }
         if (JenisBuah.anggur == namaBuah)
         {
+            score += 15;
+            scoreText.text = score.ToString();
             return 3;
         }
         if (JenisBuah.jeruk == namaBuah)
         {
+            score += 20;
+            scoreText.text = score.ToString();
             return 4;
         }
         if (JenisBuah.apel == namaBuah)
         {
+            score += 25;
+            scoreText.text = score.ToString();
             return 5;
         }
         if (JenisBuah.kelapa == namaBuah)
         {
+            score += 30;
+            scoreText.text = score.ToString();
             return 6;
         }
         if (JenisBuah.nanas == namaBuah)
         {
+            score += 35;
+            scoreText.text = score.ToString();
             return 7;
         }
         if (JenisBuah.melon == namaBuah)
         {
+            score += 40;
+            scoreText.text = score.ToString();
             return 8;
         }
 

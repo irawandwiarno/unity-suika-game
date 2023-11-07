@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8198265574778098006}
   - component: {fileID: 5788785474898943421}
   - component: {fileID: 3883103148674533456}
-  - component: {fileID: 8730315512743034421}
+  - component: {fileID: 3098762617856415213}
   m_Layer: 0
   m_Name: Jeruk
   m_TagString: Untagged
@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326460361228436056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.3838005, y: -0.19, z: 0}
-  m_LocalScale: {x: 0.8475, y: 0.8475, z: 0.8475}
+  m_LocalPosition: {x: 11.3307, y: -0.2431, z: 0}
+  m_LocalScale: {x: 0.2601318, y: 0.2601318, z: 0.2601318}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8198265574778098006
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: feac19a62ad9da640952fad8e77024c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12fff90df5613104f9eb6f16a6d03772, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &8730315512743034421
+--- !u!58 &3098762617856415213
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,4 +162,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.525
+  m_Radius: 1.8250003
