@@ -9,33 +9,26 @@ public class EndLine : MonoBehaviour
     public GameObject UIHandler;
     private UIHandler UIHandlerScript;
 
-
-
     private void Start()
     {
         UIHandlerScript = UIHandler.GetComponent<UIHandler>();
+        isPaused = false;
+        ResumeGame();
     }
-
-    
 
     public void PauseGame()
     {
-        isPaused = true;
-        Time.timeScale = 0; // set timescale ke 0 untuk pause game
-    }
-    public void ResumeGame()
-    {
-        isPaused = false;
-        Time.timeScale = 1; // set timescale ke 0 untuk pause game
+        Time.timeScale = 0; 
     }
 
+    public void ResumeGame()
+    {
+        Time.timeScale = 1; 
+    }
 
     public void GameOver()
     {
-        PauseGame(); // pause game
+        PauseGame(); 
         UIHandlerScript.GameOver();
     }
-
-
-
 }

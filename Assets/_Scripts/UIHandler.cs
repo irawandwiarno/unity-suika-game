@@ -8,10 +8,8 @@ public class UIHandler : MonoBehaviour
 {
     public GameObject PanelScore;
     public GameObject PanelGamePlay;
-    public GameObject PanelOption;
+    public ScriptManagement scriptManagement;
     public TextMeshProUGUI scoreText;
-
-
 
 
     private void Start()
@@ -21,23 +19,19 @@ public class UIHandler : MonoBehaviour
 
     public void backMainButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
-
 
     public void GameOver()
     {
-        scoreText.text = ScriptManagement.score.ToString();
+        scoreText.text = scriptManagement.Score.ToString();
         PanelGamePlay.SetActive(false);
         PanelScore.SetActive(true);
     }
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene("GamePlay", LoadSceneMode.Single);
     }
-
-   
-   
-
 }
+

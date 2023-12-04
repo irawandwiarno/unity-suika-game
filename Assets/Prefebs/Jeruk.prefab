@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326460361228436056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.3307, y: -0.2431, z: 0}
-  m_LocalScale: {x: 0.2601318, y: 0.2601318, z: 0.2601318}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.21858877, y: 0.21858877, z: 0.21858877}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jenisBuah: 3
   followPlayer: 0
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &3883103148674533456
 Rigidbody2D:
   serializedVersion: 4

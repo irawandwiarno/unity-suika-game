@@ -1,128 +1,140 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class ScriptManagement : MonoBehaviour
 {
-    static public bool ubahBuah = false;
-    static public JenisBuah namaBuah;
-    static public Vector3 lokasi;
+    public static BuahInfo buahInfo;
     public GameObject[] prefebs;
     public GameObject AnkorSpawn;
     public GameObject player;
-    SpawnFruit spawnScript;
-    public bool stayFruit = false;
+    private SpawnFruit spawnScript;
+    private Player playerScript;
+    private bool stayFruit = false;
 
     public TextMeshProUGUI scoreText;
-    static public int score = 0;
+    public int score = 0;
+    public int Score
+    {
+        get
+        {
+            return score;
+        }
+        private set { score = value; }
+    }
 
 
-
+    private int index;
 
     private GameObject fruitNext;
 
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
+    }
+
     private void Start()
     {
+        cleanStaticVar();
         spawnScript = AnkorSpawn.gameObject.GetComponent<SpawnFruit>();
         spawnBuah();
-        scoreText.text = score.ToString();
+        scoreText.text = "0";
+        score = 0;
+        Debug.Log(scoreText.text);
     }
+
     private void Update()
     {
+        refraseScoreDisplay();
         checkFruitInPlayer();
         gabunginBuah();
     }
 
     private void gabunginBuah()
     {
-        if (ubahBuah)
+        if (buahInfo != null && buahInfo!.ubahBuah)
         {
-            ubahBuah = false;
+            buahInfo.ubahBuah = false;
             int index = nextBuahIndex();
             if (index > 0)
             {
-                Instantiate(prefebs[index], lokasi, Quaternion.identity);
+                Instantiate(prefebs[index], buahInfo.lokasi, Quaternion.identity);
             }
         }
     }
 
     private int nextBuahIndex()
     {
-        if (JenisBuah.cerry == namaBuah)
+        switch (buahInfo.namaBuah)
         {
-            score += 5;
-            scoreText.text = score.ToString();
-            return 1;
+            case JenisBuah.cerry:
+                score += 5;
+                return 1;
+            case JenisBuah.stawberry:
+                score += 10;
+                return 2;
+            case JenisBuah.anggur:
+                score += 15;
+                return 3;
+            case JenisBuah.jeruk:
+                score += 20;
+                return 4;
+            case JenisBuah.apel:
+                score += 25;
+                return 5;
+            case JenisBuah.kelapa:
+                score += 30;
+                return 6;
+            case JenisBuah.nanas:
+                score += 35;
+                return 7;
+            case JenisBuah.melon:
+                score += 40;
+                return 8;
+            case JenisBuah.semangka:
+                score += 50;
+                return 0;
+            default:
+                return 0;
         }
-        if (JenisBuah.stawberry == namaBuah)
-        {
-            score += 10;
-            scoreText.text = score.ToString();
-            return 2;
-        }
-        if (JenisBuah.anggur == namaBuah)
-        {
-            score += 15;
-            scoreText.text = score.ToString();
-            return 3;
-        }
-        if (JenisBuah.jeruk == namaBuah)
-        {
-            score += 20;
-            scoreText.text = score.ToString();
-            return 4;
-        }
-        if (JenisBuah.apel == namaBuah)
-        {
-            score += 25;
-            scoreText.text = score.ToString();
-            return 5;
-        }
-        if (JenisBuah.kelapa == namaBuah)
-        {
-            score += 30;
-            scoreText.text = score.ToString();
-            return 6;
-        }
-        if (JenisBuah.nanas == namaBuah)
-        {
-            score += 35;
-            scoreText.text = score.ToString();
-            return 7;
-        }
-        if (JenisBuah.melon == namaBuah)
-        {
-            score += 40;
-            scoreText.text = score.ToString();
-            return 8;
-        }
-
-        return 0;
     }
 
+    public void refraseScoreDisplay()
+    {
+        scoreText.text = score.ToString();
+    }
 
     private void spawnBuah()
     {
-
-        fruitNext = spawnScript.setSpawn(prefebs[Random.Range(0, 4)]);
-        fruitNext.GetComponent<Rigidbody2D>().gravityScale = 0;
-
+        index = Random.Range(0, 4);
+        fruitNext = spawnScript.setSpawn(prefebs[index], null);
     }
 
     private void checkFruitInPlayer()
     {
-        if (!Player.fruitExist)
+        if (!playerScript.isFruitExist)
         {
-            Player.fruitExist = true;
-            Buah buahScript = fruitNext.GetComponent<Buah>();
-            buahScript.followPlayer = true;
-            buahScript.addSubcribe();
+            playerScript.isFruitExist = true;
+            fruitNextDestroy();
+            GameObject buahInPlayer = spawnScript.setSpawn(prefebs[index], player.transform);
+            buahInPlayer.gameObject.GetComponent<Buah>().addSubcribe();
+            buahInPlayer.gameObject.GetComponent<Buah>().followPlayer = true;
             spawnBuah();
         }
     }
 
-    
+    private void fruitNextDestroy()
+    {
+        Destroy(fruitNext);
+    }
 
+    private void cleanStaticVar()
+    {
+        buahInfo = null;
+    }
 }
 
 
